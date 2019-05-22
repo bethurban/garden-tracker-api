@@ -1,9 +1,4 @@
 class Api::UsersController < ApplicationController
-  before_action :set_user, only: [:show]
-
-  def index
-    render json: User.all
-  end
 
   def create
     user = User.new(user_params)
@@ -15,14 +10,11 @@ class Api::UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: params[:id])
     render json: @user
   end
 
   private
-
-    def set_user
-      @user = User.find_by(id: params[:id])
-    end
 
     def user_params
       params.permit([:email])
