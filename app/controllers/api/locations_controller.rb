@@ -34,7 +34,7 @@ class Api::LocationsController < ApplicationController
     end
 
     def location_params
-      params.permit([:name])
+      params.permit([:name, :user_id])
     end
 
 end
